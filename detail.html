@@ -140,18 +140,18 @@
                 <div class="hidden lg:flex items-center bg-surface-container rounded px-4 py-2">
                     <span class="material-symbols-outlined text-outline">search</span>
                     <input class="bg-transparent border-none focus:ring-0 text-label-md ml-2 w-48"
-                        placeholder="Search our collection..." type="text" />
+                        placeholder="Search our collection..." type="text" data-search-input />
                 </div>
                 <div class="flex gap-4">
-                    <span
-                        class="material-symbols-outlined text-primary cursor-pointer active:scale-95 transition-transform"
-                        data-icon="person">person</span>
-                    <button
-                        class="relative text-primary cursor-pointer active:scale-95 transition-transform"
-                        data-open-cart
-                        type="button">
+                    <a class="material-symbols-outlined text-primary cursor-pointer active:scale-95 transition-transform"
+                        data-icon="person" href="mailto:concierge@luminabooks.example"
+                        aria-label="Contact concierge">person</a>
+                    <button class="relative text-primary cursor-pointer active:scale-95 transition-transform"
+                        data-open-cart type="button">
                         <span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
-                        <span class="absolute -top-2 -right-2 bg-primary text-white text-[10px] min-w-4 h-4 px-1 rounded-full flex items-center justify-center font-bold" data-cart-count>0</span>
+                        <span
+                            class="absolute -top-2 -right-2 bg-primary text-white text-[10px] min-w-4 h-4 px-1 rounded-full flex items-center justify-center font-bold"
+                            data-cart-count>0</span>
                     </button>
                 </div>
             </div>
@@ -177,8 +177,10 @@
                     <span>/</span>
                     <a class="hover:text-primary" href="./list.html" data-detail-category-link>Contemporary Fiction</a>
                 </nav>
-                <h1 class="font-display-lg text-display-lg text-on-background mb-2" data-detail-title>The Architecture of Silence</h1>
-                <p class="font-headline-md text-headline-md text-secondary mb-8">by <span data-detail-author>Elena Vance</span></p>
+                <h1 class="font-display-lg text-display-lg text-on-background mb-2" data-detail-title>The Architecture
+                    of Silence</h1>
+                <p class="font-headline-md text-headline-md text-secondary mb-8">by <span data-detail-author>Elena
+                        Vance</span></p>
                 <div class="flex items-baseline gap-4 mb-10">
                     <span class="font-display-lg text-headline-lg text-primary" data-detail-price>$32.00</span>
                     <span class="font-body-md text-label-md text-outline line-through" data-detail-compare>$45.00</span>
@@ -193,12 +195,12 @@
                 <div class="flex flex-col sm:flex-row gap-4">
                     <button
                         class="flex-1 bg-primary text-on-primary font-body-md text-label-md uppercase tracking-widest py-5 px-8 hover:bg-on-primary-fixed transition-colors"
-                        data-add-to-cart
-                        type="button">
+                        data-add-to-cart type="button">
                         Add to Cart
                     </button>
                     <button
-                        class="flex-1 border border-primary text-primary font-body-md text-label-md uppercase tracking-widest py-5 px-8 hover:bg-surface-container transition-colors">
+                        class="flex-1 border border-primary text-primary font-body-md text-label-md uppercase tracking-widest py-5 px-8 hover:bg-surface-container transition-colors"
+                        data-add-to-wishlist type="button">
                         Add to Wishlist
                     </button>
                 </div>
@@ -220,7 +222,8 @@
             <div class="md:col-span-8 bg-surface-container-low p-10 border border-outline-variant">
                 <h2 class="font-headline-lg text-headline-lg mb-6">Editorial Summary</h2>
                 <div class="space-y-4 font-body-md text-body-md text-on-surface-variant leading-relaxed">
-                    <p>In "The Architecture of Silence," award-winning author Elena Vance presents a narrative that is
+                    <p data-detail-summary-one>In "The Architecture of Silence," award-winning author Elena Vance
+                        presents a narrative that is
                         both expansive and intimately claustrophobic. The story follows Julian Thorne, a reclusive
                         architect tasked with renovating a crumbling estate on the coast of Maine. As Julian peels back
                         the layers of dust and decayed timber, he discovers architectural plans that defy physical
@@ -261,7 +264,8 @@
                 </div>
                 <div class="mt-12 flex items-center gap-4">
                     <span class="material-symbols-outlined text-4xl" data-icon="book_5">book_5</span>
-                    <p class="text-caption leading-tight opacity-80">This edition features a bespoke linen cover and
+                    <p class="text-caption leading-tight opacity-80" data-detail-note>This edition features a bespoke
+                        linen cover and
                         silver-foil stamping.</p>
                 </div>
             </div>
@@ -270,7 +274,8 @@
         <section class="mb-20">
             <div class="flex items-baseline justify-between mb-10">
                 <h2 class="font-display-lg text-headline-lg">Reader Reviews</h2>
-                <button class="text-primary font-body-md text-label-md uppercase underline tracking-wider">Write a
+                <button class="text-primary font-body-md text-label-md uppercase underline tracking-wider"
+                    data-write-review type="button">Write a
                     Review</button>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
@@ -432,10 +437,13 @@
         <div
             class="grid grid-cols-1 md:grid-cols-12 gap-gutter w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-20">
             <div class="md:col-span-4">
-                <div class="font-display-lg text-headline-md text-primary mb-6">Lumina Books</div>
-                <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed max-w-xs">
-                    Curators of the written word, dedicated to the preservation of physical literature in a digital age.
-                </p>
+                <a class="font-display-lg text-headline-md text-primary mb-6 block" href="./index.html">Lumina Books</a>
+
+                <div class="font-display-lg text-headline-md text-primary mb-6">
+                    <p>Họ tên: Phạm Đoàn Thịnh</p>
+                    <p>Lớp: D22_TH05</p>
+                    <p>MSSV: DH52201505</p>
+                </div>
             </div>
             <div class="md:col-span-2">
                 <h4 class="font-body-md text-label-md uppercase tracking-widest text-primary mb-6">Explore</h4>

@@ -1,5 +1,7 @@
 (function () {
   const STORAGE_KEY = "lunar-cart";
+  const WISHLIST_KEY = "lunar-wishlist";
+  const PROMO_KEY = "lunar-promo";
   const PACKAGING_FEE = 5;
   const SHIPPING_FEE = 4.99;
   const TAX_RATE = 0.08;
@@ -266,16 +268,40 @@
     return PRODUCTS.find((product) => product.id === id);
   }
 
-  function readCart() {
+  function readJson(key, fallback) {
     try {
-      return JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+      return JSON.parse(localStorage.getItem(key) || JSON.stringify(fallback));
     } catch {
-      return [];
+      return fallback;
     }
+  }
+
+  function readCart() {
+    return readJson(STORAGE_KEY, []);
   }
 
   function writeCart(cart) {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(cart));
+  }
+
+  function readWishlist() {
+    return readJson(WISHLIST_KEY, []);
+  }
+
+  function writeWishlist(wishlist) {
+    localStorage.setItem(WISHLIST_KEY, JSON.stringify(wishlist));
+  }
+
+  function readPromo() {
+    return readJson(PROMO_KEY, null);
+  }
+
+  function writePromo(promo) {
+    if (!promo) {
+      localStorage.removeItem(PROMO_KEY);
+      return;
+    }
+    localStorage.setItem(PROMO_KEY, JSON.stringify(promo));
   }
 
   function cartCount(cart) {
@@ -333,6 +359,97 @@
     });
   }
 
+  function sanitizeMojibake() {
+    document.body.innerHTML = document.body.innerHTML
+      .replace(/Â©/g, "&copy;")
+      .replace(/â€”/g, "-")
+      .replace(/â€™/g, "'")
+      .replace(/â˜…/g, "★")
+      .replace(/Há» tÃªn/g, "H&#7885; t&#234;n")
+      .replace(/Pháº¡m ÄoÃ n Thá»‹nh/g, "Ph&#7841;m &#272;o&#224;n Th&#7883;nh")
+      .replace(/Lá»›p/g, "L&#7899;p");
+  }
+
+  function injectFooterIdentity() {
+    const footerColumns = document.querySelectorAll("footer .md\\:col-span-4, footer .md\\:col-span-3");
+    const identityMarkup = `
+      <div class="mt-4 space-y-2 text-sm text-on-surface-variant" data-student-identity>
+        <p>H&#7885; t&#234;n: Ph&#7841;m &#272;o&#224;n Th&#7883;nh</p>
+        <p>L&#7899;p: D22_TH05</p>
+        <p>MSSV: DH52201505</p>
+      </div>
+    `;
+
+    const target = Array.from(footerColumns).find((column) => {
+      const heading = column.querySelector("h4");
+      return heading && /location/i.test(heading.textContent || "");
+    }) || footerColumns[0];
+
+    if (target && !target.querySelector("[data-student-identity]")) {
+      target.insertAdjacentHTML("beforeend", identityMarkup);
+    }
+  }
+
+  function getPromoDefinition(code) {
+    const normalized = code.trim().toUpperCase();
+    const promos = {
+      LUMINA10: { code: normalized, type: "percent", value: 0.1, label: "10% off collector subtotal" },
+      ARCHIVE15: { code: normalized, type: "fixed", value: 15, label: "$15 off orders above $100" }
+    };
+    const promo = promos[normalized];
+    if (!promo) return null;
+    if (normalized === "ARCHIVE15" && cartSubtotal(cartItemsDetailed()) < 100) return null;
+    return promo;
+  }
+
+  function getDiscountAmount(subtotal) {
+    const promo = readPromo();
+    if (!promo) return 0;
+    if (promo.type === "percent") return subtotal * promo.value;
+    if (promo.type === "fixed") return Math.min(subtotal, promo.value);
+    return 0;
+  }
+
+  function addToWishlist(productId) {
+    const wishlist = readWishlist();
+    if (!wishlist.includes(productId)) {
+      wishlist.push(productId);
+      writeWishlist(wishlist);
+    }
+    return wishlist;
+  }
+
+  function buildDetailCopy(product) {
+    return {
+      summaryOne: `${product.title} places ${product.author}'s voice inside a richly composed ${product.category.toLowerCase()} frame, balancing atmosphere with a strong editorial sense of pace. This edition leans into tactile reading, pairing generous margins with a production style that feels closer to a private archive than a mass-market release.`,
+      summaryTwo: `What makes this volume distinctive is the way it turns ${product.category.toLowerCase()} into something intimate and collectible. The language stays precise, the visual presentation remains restrained, and the result feels curated for readers who care as much about the physical object as the text itself.`,
+      note: `This ${product.format.toLowerCase()} edition is finished with archival-grade paper and a tailored ${product.category.toLowerCase()} presentation.`,
+      reviews: [
+        {
+          name: "Mara Ellison",
+          badge: "Verified Collector",
+          rating: 5,
+          quote: "A beautifully produced volume that rewards slow reading.",
+          body: `${product.title} feels deliberate in the best possible way. The pacing, typography, and physical finish all reinforce the mood of the work.`
+        },
+        {
+          name: "Julian Cross",
+          badge: "Lumina Member",
+          rating: 4,
+          quote: "Elegant, thoughtful, and easy to return to.",
+          body: `I came for the design language and stayed for the clarity of ${product.author}'s voice. It sits comfortably between collectible object and practical everyday read.`
+        },
+        {
+          name: "Leonie Hart",
+          badge: "Private Library Circle",
+          rating: 5,
+          quote: "Exactly the kind of edition I want on my shelf.",
+          body: `There is a quiet confidence to the whole package. ${product.title} looks refined, reads cleanly, and leaves a lasting impression.`
+        }
+      ]
+    };
+  }
+
   function wirePlaceholderLinks() {
     const routeMap = {
       "lumina books": "./index.html",
@@ -366,6 +483,39 @@
     document.querySelectorAll("[data-open-cart]").forEach((button) => {
       button.addEventListener("click", () => {
         window.location.href = "./cart.html";
+      });
+    });
+  }
+
+  function bindSearchInputs() {
+    document.querySelectorAll("[data-search-input]").forEach((input) => {
+      input.addEventListener("keydown", (event) => {
+        if (event.key !== "Enter") return;
+        event.preventDefault();
+        const q = input.value.trim();
+        window.location.href = q ? `./list.html?q=${encodeURIComponent(q)}` : "./list.html";
+      });
+    });
+  }
+
+  function bindShareButtons() {
+    document.querySelectorAll("[data-share-page]").forEach((button) => {
+      button.addEventListener("click", async () => {
+        const payload = { title: document.title, url: window.location.href };
+        if (navigator.share) {
+          try {
+            await navigator.share(payload);
+            return;
+          } catch {
+          }
+        }
+        if (navigator.clipboard?.writeText) {
+          await navigator.clipboard.writeText(window.location.href);
+          button.textContent = "check";
+          setTimeout(() => {
+            button.textContent = "share";
+          }, 1200);
+        }
       });
     });
   }
@@ -426,22 +576,59 @@
     const container = document.querySelector("[data-product-grid]");
     if (!container) return;
 
-    const featured = [
-      "infinite-perspective",
-      "stone-and-silence",
-      "digital-nomads-ethos",
-      "echoes-of-the-past",
-      "quiet-bloom",
-      "modern-manifestos"
-    ];
+    const params = new URLSearchParams(window.location.search);
+    const query = (params.get("q") || "").trim().toLowerCase();
+    const genre = params.get("genre");
+    const ratingFilter = params.get("rating") === "4.5";
+    const sort = params.get("sort") || "newest";
 
-    container.innerHTML = featured.map((id) => createListCard(getProduct(id))).join("");
+    let products = PRODUCTS.filter((product) => {
+      const matchesQuery = !query || `${product.title} ${product.author} ${product.category}`.toLowerCase().includes(query);
+      const matchesGenre = !genre || product.category.toLowerCase() === genre.toLowerCase();
+      const matchesRating = !ratingFilter || product.rating >= 4.5;
+      return matchesQuery && matchesGenre && matchesRating;
+    });
+
+    if (sort === "price-desc") products.sort((a, b) => b.price - a.price);
+    if (sort === "price-asc") products.sort((a, b) => a.price - b.price);
+    if (sort === "rating-desc") products.sort((a, b) => b.rating - a.rating);
+
+    container.innerHTML = products.map((product) => createListCard(product)).join("");
 
     container.querySelectorAll("[data-add-product]").forEach((button) => {
       button.addEventListener("click", () => {
         addToCart(button.dataset.addProduct, 1);
       });
     });
+
+    document.querySelector("[data-sort-select]")?.addEventListener("change", (event) => {
+      const next = new URLSearchParams(window.location.search);
+      next.set("sort", event.target.value);
+      window.location.search = next.toString();
+    });
+
+    document.querySelectorAll("[data-genre-option]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const next = new URLSearchParams(window.location.search);
+        next.set("genre", button.dataset.genreOption);
+        window.location.search = next.toString();
+      });
+    });
+
+    document.querySelector("[data-rating-filter]")?.addEventListener("change", (event) => {
+      const next = new URLSearchParams(window.location.search);
+      if (event.target.checked) {
+        next.set("rating", "4.5");
+      } else {
+        next.delete("rating");
+      }
+      window.location.search = next.toString();
+    });
+
+    const sortSelect = document.querySelector("[data-sort-select]");
+    if (sortSelect) sortSelect.value = sort;
+    const ratingCheckbox = document.querySelector("[data-rating-filter]");
+    if (ratingCheckbox) ratingCheckbox.checked = ratingFilter;
   }
 
   function bindDetailCards() {
@@ -484,6 +671,12 @@
     setText("[data-detail-publisher]", product.publisher);
     setText("[data-detail-language]", product.language);
 
+    const detailCopy = buildDetailCopy(product);
+    setText("[data-detail-summary-one]", detailCopy.summaryOne);
+    const secondSummary = document.querySelector("[data-detail-summary-two]") || document.querySelectorAll(".space-y-4.font-body-md.text-body-md.text-on-surface-variant.leading-relaxed p")[1];
+    if (secondSummary) secondSummary.textContent = detailCopy.summaryTwo;
+    setText("[data-detail-note]", detailCopy.note);
+
     const categoryLink = document.querySelector("[data-detail-category-link]");
     if (categoryLink) {
       categoryLink.textContent = product.category;
@@ -493,6 +686,36 @@
     const addButton = document.querySelector("[data-add-to-cart]");
     if (addButton) {
       addButton.addEventListener("click", () => addToCart(product.id, 1));
+    }
+
+    const wishlistButton = document.querySelector("[data-add-to-wishlist]");
+    if (wishlistButton) {
+      wishlistButton.addEventListener("click", () => {
+        addToWishlist(product.id);
+        wishlistButton.textContent = "Saved to Wishlist";
+      });
+    }
+
+    document.querySelector("[data-write-review]")?.addEventListener("click", () => {
+      window.location.href = `mailto:reviews@luminabooks.example?subject=${encodeURIComponent(`Review request for ${product.title}`)}`;
+    });
+
+    const reviewGrid = document.querySelector("[data-detail-reviews]") || document.querySelector("[data-write-review]")?.parentElement?.nextElementSibling;
+    if (reviewGrid) {
+      reviewGrid.innerHTML = detailCopy.reviews.map((review) => `
+        <div class="border border-outline-variant p-8 bg-surface-container-lowest">
+          <div class="flex text-secondary mb-4">${Array.from({ length: 5 }, (_, index) => `<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' ${index < review.rating ? 1 : 0};">star</span>`).join("")}</div>
+          <p class="font-headline-md text-body-lg mb-4 italic">"${review.quote}"</p>
+          <p class="font-body-md text-body-md text-on-surface-variant mb-6 leading-relaxed">${review.body}</p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container font-bold">${review.name.charAt(0)}</div>
+            <div>
+              <p class="text-label-md font-bold">${review.name}</p>
+              <p class="text-caption text-outline">${review.badge}</p>
+            </div>
+          </div>
+        </div>
+      `).join("");
     }
 
     const related = document.querySelector("[data-related-products]");
@@ -572,7 +795,8 @@
     });
 
     const subtotal = cartSubtotal(items);
-    const total = subtotal + (items.length ? PACKAGING_FEE : 0);
+    const discount = getDiscountAmount(subtotal);
+    const total = subtotal - discount + (items.length ? PACKAGING_FEE : 0);
 
     const itemCountNode = document.querySelector("[data-cart-item-count]");
     if (itemCountNode) itemCountNode.textContent = String(cartCount(readCart()));
@@ -583,13 +807,39 @@
     const totalNode = document.querySelector("[data-cart-total]");
     if (totalNode) totalNode.textContent = formatCurrency(total);
 
+    const promoButton = document.querySelector("[data-apply-promo]");
+    const promoInput = document.querySelector("[data-promo-input]");
+    const promoMessage = document.querySelector("[data-promo-message]");
+    const promo = readPromo();
+    if (promoMessage && promo) {
+      promoMessage.textContent = `${promo.code} applied: ${promo.label}`;
+    }
+    if (promoButton) promoButton.onclick = () => {
+      const promoValue = promoInput?.value || "";
+      const nextPromo = getPromoDefinition(promoValue);
+      if (!nextPromo) {
+        if (promoMessage) promoMessage.textContent = "Promo code not recognized for this cart.";
+        writePromo(null);
+      } else {
+        writePromo(nextPromo);
+        if (promoMessage) promoMessage.textContent = `${nextPromo.code} applied: ${nextPromo.label}`;
+      }
+      renderCartPage();
+      renderPaymentPage();
+    };
+
     const checkoutButton = document.querySelector("[data-proceed-checkout]");
     if (checkoutButton) {
       checkoutButton.disabled = items.length === 0;
-      checkoutButton.addEventListener("click", () => {
+      checkoutButton.onclick = () => {
         if (items.length) window.location.href = "./payment.html";
-      });
+      };
     }
+
+    const walletButton = document.querySelector("[data-pay-wallet]");
+    if (walletButton) walletButton.onclick = () => {
+      if (items.length) window.location.href = "./payment.html?method=paypal";
+    };
   }
 
   function renderPaymentPage() {
@@ -621,15 +871,17 @@
     }
 
     const subtotal = cartSubtotal(items);
-    const tax = subtotal * TAX_RATE;
-    const total = subtotal + (items.length ? SHIPPING_FEE : 0) + tax;
+    const discount = getDiscountAmount(subtotal);
+    const discountedSubtotal = Math.max(0, subtotal - discount);
+    const tax = discountedSubtotal * TAX_RATE;
+    const total = discountedSubtotal + (items.length ? SHIPPING_FEE : 0) + tax;
 
     const setText = (selector, value) => {
       const node = document.querySelector(selector);
       if (node) node.textContent = value;
     };
 
-    setText("[data-payment-subtotal]", formatCurrency(subtotal));
+    setText("[data-payment-subtotal]", formatCurrency(discountedSubtotal));
     setText("[data-payment-shipping]", formatCurrency(items.length ? SHIPPING_FEE : 0));
     setText("[data-payment-tax]", formatCurrency(tax));
     setText("[data-payment-total]", formatCurrency(total));
@@ -637,20 +889,38 @@
     const placeOrderButton = document.querySelector("[data-place-order]");
     if (placeOrderButton) {
       placeOrderButton.disabled = items.length === 0;
-      placeOrderButton.addEventListener("click", () => {
+      placeOrderButton.onclick = () => {
         if (!items.length) return;
         writeCart([]);
+        writePromo(null);
         updateCartBadges();
-        window.alert("Order placed successfully.");
         window.location.href = "./index.html";
-      });
+      };
     }
+
+    const selectedMethod = new URLSearchParams(window.location.search).get("method") || "card";
+    document.querySelectorAll("[data-payment-method]").forEach((button) => {
+      const active = button.dataset.paymentMethod === selectedMethod;
+      button.classList.toggle("bg-primary", active);
+      button.classList.toggle("text-on-primary", active);
+      button.classList.toggle("border-primary", active);
+      button.classList.toggle("border-outline-variant", !active);
+      button.onclick = () => {
+        const next = new URLSearchParams(window.location.search);
+        next.set("method", button.dataset.paymentMethod);
+        window.location.search = next.toString();
+      };
+    });
   }
 
   function init() {
+    sanitizeMojibake();
+    //injectFooterIdentity();
     wirePlaceholderLinks();
     updateCartBadges();
     bindOpenCartButtons();
+    bindSearchInputs();
+    bindShareButtons();
     renderHomePage();
     renderListPage();
     bindDetailCards();

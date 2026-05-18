@@ -131,7 +131,8 @@
         <nav
             class="flex justify-between items-center w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop h-20">
             <div class="flex items-center gap-8">
-                <a class="font-display-lg text-headline-lg text-primary dark:text-primary-fixed-dim" href="./index.html">Lumina
+                <a class="font-display-lg text-headline-lg text-primary dark:text-primary-fixed-dim"
+                    href="./index.html">Lumina
                     Books</a>
                 <div class="hidden md:flex gap-6 items-center">
                     <a class="font-body-md text-label-md uppercase tracking-wider text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors"
@@ -145,15 +146,16 @@
                 </div>
             </div>
             <div class="flex items-center gap-6">
-                <span
-                    class="material-symbols-outlined text-primary cursor-pointer transition-transform Active:scale-95">person</span>
-                <button
-                    class="relative text-primary cursor-pointer transition-transform Active:scale-95"
-                    data-open-cart
+                <a class="material-symbols-outlined text-primary cursor-pointer transition-transform Active:scale-95"
+                    href="mailto:concierge@luminabooks.example" aria-label="Contact concierge">person</a>
+                <button class="relative text-primary cursor-pointer transition-transform Active:scale-95" data-open-cart
                     type="button">
                     <span class="material-symbols-outlined">shopping_cart</span>
-                    <span class="absolute -top-2 -right-2 bg-primary text-white text-[10px] min-w-4 h-4 px-1 rounded-full flex items-center justify-center" data-cart-count>0</span>
+                    <span
+                        class="absolute -top-2 -right-2 bg-primary text-white text-[10px] min-w-4 h-4 px-1 rounded-full flex items-center justify-center"
+                        data-cart-count>0</span>
                 </button>
+
             </div>
         </nav>
     </header>
@@ -236,17 +238,20 @@
                     <!-- Payment Tabs -->
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
                         <button
-                            class="flex items-center justify-center gap-3 py-4 border border-primary bg-primary text-on-primary">
+                            class="flex items-center justify-center gap-3 py-4 border border-primary bg-primary text-on-primary"
+                            data-payment-method="card" type="button">
                             <span class="material-symbols-outlined">credit_card</span>
                             <span class="font-label-md text-label-md uppercase tracking-widest">Card</span>
                         </button>
                         <button
-                            class="flex items-center justify-center gap-3 py-4 border border-outline-variant hover:border-primary transition-all">
+                            class="flex items-center justify-center gap-3 py-4 border border-outline-variant hover:border-primary transition-all"
+                            data-payment-method="paypal" type="button">
                             <span class="material-symbols-outlined">payments</span>
                             <span class="font-label-md text-label-md uppercase tracking-widest">PayPal</span>
                         </button>
                         <button
-                            class="flex items-center justify-center gap-3 py-4 border border-outline-variant hover:border-primary transition-all">
+                            class="flex items-center justify-center gap-3 py-4 border border-outline-variant hover:border-primary transition-all"
+                            data-payment-method="cod" type="button">
                             <span class="material-symbols-outlined">local_shipping</span>
                             <span class="font-label-md text-label-md uppercase tracking-widest">COD</span>
                         </button>
@@ -317,8 +322,7 @@
                     </div>
                     <button
                         class="w-full mt-10 py-5 bg-primary text-on-primary font-label-md text-label-md uppercase tracking-widest hover:bg-on-primary-fixed transition-colors Active:scale-95"
-                        data-place-order
-                        type="button">
+                        data-place-order type="button">
                         Place Order
                     </button>
                     <p
@@ -339,6 +343,11 @@
                 <span
                     class="font-display-lg text-headline-md text-primary dark:text-primary-fixed-dim block mb-4">Lumina
                     Books</span>
+                <div class="font-display-lg text-headline-md text-primary mb-6">
+                    <p>Họ tên: Phạm Đoàn Thịnh</p>
+                    <p>Lớp: D22_TH05</p>
+                    <p>MSSV: DH52201505</p>
+                </div>
                 <p class="font-body-md text-body-md text-on-surface-variant">© 2024 Lumina Books. Curators of the
                     written word.</p>
             </div>
@@ -361,8 +370,10 @@
                 </div>
                 <div class="flex flex-col gap-3 items-end">
                     <div class="flex gap-4">
-                        <span class="material-symbols-outlined text-on-surface-variant">share</span>
-                        <span class="material-symbols-outlined text-on-surface-variant">favorite</span>
+                        <button class="material-symbols-outlined text-on-surface-variant" data-share-page
+                            type="button">share</button>
+                        <a class="material-symbols-outlined text-on-surface-variant" href="./list.html"
+                            aria-label="Browse favorites">favorite</a>
                     </div>
                 </div>
             </div>
