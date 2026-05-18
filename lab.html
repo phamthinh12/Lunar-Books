@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Lumina Books | Lab Tổng</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+
+        body {
+            background-color: #fbfaee;
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        background: "#fbfaee",
+                        "primary-container": "#1a237e",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed-variant": "#343d96",
+                        "on-primary-fixed": "#000767",
+                        "on-tertiary-fixed-variant": "#464747",
+                        "on-error-container": "#93000a",
+                        secondary: "#75584d",
+                        "surface-tint": "#4c56af",
+                        "inverse-primary": "#bdc2ff",
+                        "secondary-container": "#fed7ca",
+                        error: "#ba1a1a",
+                        "tertiary-container": "#2f3030",
+                        "inverse-surface": "#303129",
+                        "on-primary-container": "#8690ee",
+                        "surface-container-high": "#e9e9dd",
+                        outline: "#767683",
+                        "on-secondary-fixed-variant": "#5b4137",
+                        "on-surface-variant": "#454652",
+                        "surface-container-lowest": "#ffffff",
+                        "outline-variant": "#c6c5d4",
+                        primary: "#000666",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed-dim": "#c7c6c6",
+                        "secondary-fixed-dim": "#e4beb2",
+                        "surface-container-low": "#f5f4e8",
+                        "on-background": "#1b1c15",
+                        "primary-fixed-dim": "#bdc2ff",
+                        "on-secondary-fixed": "#2b160f",
+                        "primary-fixed": "#e0e0ff",
+                        "secondary-fixed": "#ffdbce",
+                        surface: "#fbfaee",
+                        tertiary: "#1a1b1b",
+                        "on-tertiary-fixed": "#1b1c1c",
+                        "surface-container-highest": "#e4e3d7",
+                        "on-secondary-container": "#795c51",
+                        "inverse-on-surface": "#f2f1e5",
+                        "error-container": "#ffdad6",
+                        "surface-bright": "#fbfaee",
+                        "surface-variant": "#e4e3d7",
+                        "tertiary-fixed": "#e4e2e2",
+                        "on-error": "#ffffff",
+                        "surface-dim": "#dbdbcf",
+                        "on-tertiary-container": "#989797",
+                        "on-surface": "#1b1c15",
+                        "on-secondary": "#ffffff",
+                        "surface-container": "#efeee3"
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.125rem",
+                        lg: "0.25rem",
+                        xl: "0.5rem",
+                        full: "0.75rem"
+                    },
+                    spacing: {
+                        unit: "8px",
+                        "margin-desktop": "64px",
+                        "margin-tablet": "32px",
+                        gutter: "24px",
+                        "container-max": "1280px",
+                        "margin-mobile": "20px"
+                    },
+                    fontFamily: {
+                        "display-lg": ["Playfair Display"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Playfair Display"],
+                        "headline-lg-mobile": ["Playfair Display"],
+                        "headline-lg": ["Playfair Display"],
+                        "body-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        caption: ["Inter"]
+                    },
+                    fontSize: {
+                        "display-lg": ["48px", { lineHeight: "1.2", letterSpacing: "-0.02em", fontWeight: "700" }],
+                        "body-md": ["16px", { lineHeight: "1.5", fontWeight: "400" }],
+                        "headline-md": ["24px", { lineHeight: "1.4", fontWeight: "600" }],
+                        "headline-lg-mobile": ["28px", { lineHeight: "1.3", fontWeight: "600" }],
+                        "headline-lg": ["32px", { lineHeight: "1.3", fontWeight: "600" }],
+                        "body-lg": ["18px", { lineHeight: "1.6", fontWeight: "400" }],
+                        "label-md": ["14px", { lineHeight: "1.2", letterSpacing: "0.05em", fontWeight: "500" }],
+                        caption: ["12px", { lineHeight: "1.4", fontWeight: "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-background text-on-background font-body-md" data-page="lab">
+    <header class="bg-background border-b border-surface-variant sticky top-0 z-50">
+        <div class="flex justify-between items-center w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop h-20">
+            <a class="font-display-lg text-headline-lg text-primary" href="./index.html">Lumina Books</a>
+            <nav class="hidden md:flex items-center gap-8 font-body-md text-label-md uppercase tracking-wider">
+                <a class="text-on-surface-variant hover:text-primary transition-colors" href="./list.html">Shop</a>
+                <a class="text-on-surface-variant hover:text-primary transition-colors" href="./list.html">Categories</a>
+                <a class="text-on-surface-variant hover:text-primary transition-colors" href="./list.html">Bestsellers</a>
+                <a class="text-on-surface-variant hover:text-primary transition-colors" href="./list.html">New Arrivals</a>
+                <a class="text-primary border-b-2 border-primary pb-1" href="./lab.html">Labs</a>
+            </nav>
+            <div class="flex items-center gap-6">
+                <div class="hidden lg:flex items-center border-b border-outline-variant py-1">
+                    <span class="material-symbols-outlined text-outline">search</span>
+                    <input class="bg-transparent border-none focus:ring-0 text-caption placeholder:text-outline w-48"
+                        placeholder="Search our archives..." type="text" />
+                </div>
+                <button class="material-symbols-outlined text-primary hover:scale-95 transition-transform" data-icon="person" type="button">person</button>
+                <button class="relative text-primary hover:scale-95 transition-transform" data-open-cart type="button">
+                    <span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+                    <span class="absolute -top-2 -right-2 bg-primary text-on-primary text-[10px] min-w-4 h-4 px-1 flex items-center justify-center rounded-full" data-cart-count hidden>0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main id="top">
+        <section class="w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12 md:py-20">
+            <div class="mb-12 text-center">
+                <span class="font-label-md text-label-md uppercase tracking-[0.2em] text-secondary mb-4 block">Lab Tổng</span>
+                <h1 class="font-display-lg text-display-lg text-primary mb-4">Danh sách Lab & ví dụ</h1>
+                <p class="mx-auto max-w-2xl font-body-lg text-body-lg text-on-surface-variant">Trang tổng cho các bài Lab hiện có trong thư mục <code>Lab</code>. Chọn lab bạn muốn mở để xem kết quả và demo ở từng bài.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+                <article class="rounded-xl border border-surface-variant bg-surface-container p-8 shadow-sm">
+                    <h2 class="font-headline-md text-headline-md text-primary mb-4">Lab 01</h2>
+                    <p class="font-body-md text-on-surface-variant mb-6">Bài tập Lab 01: ví dụ ban đầu.</p>
+                    <a class="inline-flex items-center gap-2 font-label-md text-label-md uppercase tracking-widest text-primary hover:underline" href="./Lab/Lab01/Vi_du/index.html">Mở Lab 01</a>
+                </article>
+                <article class="rounded-xl border border-surface-variant bg-surface-container p-8 shadow-sm">
+                    <h2 class="font-headline-md text-headline-md text-primary mb-4">Lab 02</h2>
+                    <p class="font-body-md text-on-surface-variant mb-6">Bài tập Lab 02: ví dụ và mẫu tương tác.</p>
+                    <a class="inline-flex items-center gap-2 font-label-md text-label-md uppercase tracking-widest text-primary hover:underline" href="./Lab/Lab02/Vi_du_Lab01/index.html">Mở Lab 02</a>
+                </article>
+                <article class="rounded-xl border border-surface-variant bg-surface-container p-8 shadow-sm">
+                    <h2 class="font-headline-md text-headline-md text-primary mb-4">Lab 03</h2>
+                    <p class="font-body-md text-on-surface-variant mb-6">Bài tập Lab 03: các ví dụ mẫu & bài làm.</p>
+                    <a class="inline-flex items-center gap-2 font-label-md text-label-md uppercase tracking-widest text-primary hover:underline" href="./Lab/Lab03/Vi_du/index.html">Mở Lab 03</a>
+                </article>
+                <article class="rounded-xl border border-surface-variant bg-surface-container p-8 shadow-sm">
+                    <h2 class="font-headline-md text-headline-md text-primary mb-4">Lab 04</h2>
+                    <p class="font-body-md text-on-surface-variant mb-6">Bài tập Lab 04: ví dụ và trang mẫu.</p>
+                    <a class="inline-flex items-center gap-2 font-label-md text-label-md uppercase tracking-widest text-primary hover:underline" href="./Lab/Lab04/Vi_du/index.html">Mở Lab 04</a>
+                </article>
+                <article class="rounded-xl border border-surface-variant bg-surface-container p-8 shadow-sm">
+                    <h2 class="font-headline-md text-headline-md text-primary mb-4">Lab 05</h2>
+                    <p class="font-body-md text-on-surface-variant mb-6">Bài tập Lab 05 với ví dụ và giao diện demo.</p>
+                    <a class="inline-flex items-center gap-2 font-label-md text-label-md uppercase tracking-widest text-primary hover:underline" href="./Lab/Lab05/Vi_du/index.html">Mở Lab 05</a>
+                </article>
+                <article class="rounded-xl border border-surface-variant bg-surface-container p-8 shadow-sm">
+                    <h2 class="font-headline-md text-headline-md text-primary mb-4">Lab 06</h2>
+                    <p class="font-body-md text-on-surface-variant mb-6">Bài tập Lab 06: nhiều phần, có cả bài 1-4.</p>
+                    <div class="space-y-3">
+                        <a class="block font-body-md text-primary hover:underline" href="./Lab/Lab06/Bai_1/index.html">Lab06 - Bài 1</a>
+                        <a class="block font-body-md text-primary hover:underline" href="./Lab/Lab06/Bai_2/index.html">Lab06 - Bài 2</a>
+                        <a class="block font-body-md text-primary hover:underline" href="./Lab/Lab06/Bai_3/index.html">Lab06 - Bài 3</a>
+                        <a class="block font-body-md text-primary hover:underline" href="./Lab/Lab06/Bai_4/index.html">Lab06 - Bài 4</a>
+                    </div>
+                </article>
+                <article class="rounded-xl border border-surface-variant bg-surface-container p-8 shadow-sm">
+                    <h2 class="font-headline-md text-headline-md text-primary mb-4">Lab 07</h2>
+                    <p class="font-body-md text-on-surface-variant mb-6">Lab 07: demo mẫu và ví dụ.</p>
+                    <div class="space-y-3">
+                        <a class="block font-body-md text-primary hover:underline" href="./Lab/Lab07/Vi_du/index.html">Lab07 - Ví dụ chính</a>
+                        <a class="block font-body-md text-primary hover:underline" href="./Lab/Lab07/demo_bai_2/index.html">Lab07 - demo bài 2</a>
+                    </div>
+                </article>
+                <article class="rounded-xl border border-surface-variant bg-surface-container p-8 shadow-sm">
+                    <h2 class="font-headline-md text-headline-md text-primary mb-4">Lab 08</h2>
+                    <p class="font-body-md text-on-surface-variant mb-6">Lab 08 với hai ví dụ hiện có.</p>
+                    <div class="space-y-3">
+                        <a class="block font-body-md text-primary hover:underline" href="./Lab/Lab08/Vi_du_1/index.html">Lab08 - Ví dụ 1</a>
+                        <a class="block font-body-md text-primary hover:underline" href="./Lab/Lab08/Vi_du_2/index.html">Lab08 - Ví dụ 2</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-surface py-16">
+        <div class="w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-1 md:grid-cols-12 gap-gutter">
+            <div class="md:col-span-3">
+                <h4 class="font-label-md text-label-md uppercase tracking-widest text-primary mb-6">Lumina Books</h4>
+                <p class="font-body-md text-body-md text-on-surface-variant">A carefully curated library of stories,
+                    design work, and lab experiments.</p>
+            </div>
+            <div class="md:col-span-3">
+                <h4 class="font-label-md text-label-md uppercase tracking-widest text-primary mb-6">Explore</h4>
+                <ul class="space-y-4">
+                    <li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary hover:underline decoration-secondary transition-all" href="./index.html">Home</a></li>
+                    <li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary hover:underline decoration-secondary transition-all" href="./list.html">Shop</a></li>
+                    <li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary hover:underline decoration-secondary transition-all" href="./lab.html">Lab Tổng</a></li>
+                </ul>
+            </div>
+            <div class="md:col-span-3">
+                <h4 class="font-label-md text-label-md uppercase tracking-widest text-primary mb-6">Quick Links</h4>
+                <ul class="space-y-4">
+                    <li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary hover:underline decoration-secondary transition-all" href="#">Contact Us</a></li>
+                    <li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary hover:underline decoration-secondary transition-all" href="#">Shipping & Returns</a></li>
+                    <li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary hover:underline decoration-secondary transition-all" href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="md:col-span-3">
+                <h4 class="font-label-md text-label-md uppercase tracking-widest text-primary mb-6">Information</h4>
+                <p class="font-body-md text-body-md text-on-surface-variant mb-2">42 Curzon Street</p>
+                <p class="font-body-md text-body-md text-on-surface-variant mb-6">Mayfair, London W1J 7UG</p>
+                <p class="font-body-md text-body-md text-on-surface-variant italic">Open daily 10am - 7pm</p>
+                <div class="mt-6 space-y-2 text-sm text-on-surface-variant">
+                    <p>Họ tên: Phạm Đoàn Thịnh</p>
+                    <p>Lớp: D22_TH05</p>
+                    <p>MSSV: DH52201505</p>
+                </div>
+            </div>
+            <div class="md:col-span-12 pt-12 mt-12 border-t border-surface-variant flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="font-body-md text-body-md text-on-surface-variant opacity-75">&copy; 2024 Lumina Books. Curators of the written word.</p>
+                <div class="flex gap-8 text-on-surface-variant opacity-75 text-caption uppercase tracking-tighter">
+                    <span>London</span>
+                    <span>New York</span>
+                    <span>Paris</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="./store.js"></script>
+</body>
+
+</html>
