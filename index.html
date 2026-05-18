@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Lumina Books | Curators of the Written Word</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+
+        body {
+            background-color: #fbfaee;
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        background: "#fbfaee",
+                        "primary-container": "#1a237e",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed-variant": "#343d96",
+                        "on-primary-fixed": "#000767",
+                        "on-tertiary-fixed-variant": "#464747",
+                        "on-error-container": "#93000a",
+                        secondary: "#75584d",
+                        "surface-tint": "#4c56af",
+                        "inverse-primary": "#bdc2ff",
+                        "secondary-container": "#fed7ca",
+                        error: "#ba1a1a",
+                        "tertiary-container": "#2f3030",
+                        "inverse-surface": "#303129",
+                        "on-primary-container": "#8690ee",
+                        "surface-container-high": "#e9e9dd",
+                        outline: "#767683",
+                        "on-secondary-fixed-variant": "#5b4137",
+                        "on-surface-variant": "#454652",
+                        "surface-container-lowest": "#ffffff",
+                        "outline-variant": "#c6c5d4",
+                        primary: "#000666",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed-dim": "#c7c6c6",
+                        "secondary-fixed-dim": "#e4beb2",
+                        "surface-container-low": "#f5f4e8",
+                        "on-background": "#1b1c15",
+                        "primary-fixed-dim": "#bdc2ff",
+                        "on-secondary-fixed": "#2b160f",
+                        "primary-fixed": "#e0e0ff",
+                        "secondary-fixed": "#ffdbce",
+                        surface: "#fbfaee",
+                        tertiary: "#1a1b1b",
+                        "on-tertiary-fixed": "#1b1c1c",
+                        "surface-container-highest": "#e4e3d7",
+                        "on-secondary-container": "#795c51",
+                        "inverse-on-surface": "#f2f1e5",
+                        "error-container": "#ffdad6",
+                        "surface-bright": "#fbfaee",
+                        "surface-variant": "#e4e3d7",
+                        "tertiary-fixed": "#e4e2e2",
+                        "on-error": "#ffffff",
+                        "surface-dim": "#dbdbcf",
+                        "on-tertiary-container": "#989797",
+                        "on-surface": "#1b1c15",
+                        "on-secondary": "#ffffff",
+                        "surface-container": "#efeee3"
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.125rem",
+                        lg: "0.25rem",
+                        xl: "0.5rem",
+                        full: "0.75rem"
+                    },
+                    spacing: {
+                        unit: "8px",
+                        "margin-desktop": "64px",
+                        "margin-tablet": "32px",
+                        gutter: "24px",
+                        "container-max": "1280px",
+                        "margin-mobile": "20px"
+                    },
+                    fontFamily: {
+                        "display-lg": ["Playfair Display"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Playfair Display"],
+                        "headline-lg-mobile": ["Playfair Display"],
+                        "headline-lg": ["Playfair Display"],
+                        "body-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        caption: ["Inter"]
+                    },
+                    fontSize: {
+                        "display-lg": ["48px", { lineHeight: "1.2", letterSpacing: "-0.02em", fontWeight: "700" }],
+                        "body-md": ["16px", { lineHeight: "1.5", fontWeight: "400" }],
+                        "headline-md": ["24px", { lineHeight: "1.4", fontWeight: "600" }],
+                        "headline-lg-mobile": ["28px", { lineHeight: "1.3", fontWeight: "600" }],
+                        "headline-lg": ["32px", { lineHeight: "1.3", fontWeight: "600" }],
+                        "body-lg": ["18px", { lineHeight: "1.6", fontWeight: "400" }],
+                        "label-md": ["14px", { lineHeight: "1.2", letterSpacing: "0.05em", fontWeight: "500" }],
+                        caption: ["12px", { lineHeight: "1.4", fontWeight: "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md" data-page="home">
+    <header class="bg-background border-b border-surface-variant sticky top-0 z-50">
+        <div class="flex justify-between items-center w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop h-20">
+            <a class="font-display-lg text-headline-lg text-primary" href="./index.html">Lumina Books</a>
+            <nav class="hidden md:flex items-center gap-8 font-body-md text-label-md uppercase tracking-wider">
+                <a class="text-primary border-b-2 border-primary pb-1" href="./list.html">Shop</a>
+                <a class="text-on-surface-variant hover:text-primary transition-colors" href="./list.html">Categories</a>
+                <a class="text-on-surface-variant hover:text-primary transition-colors" href="./list.html">Bestsellers</a>
+                <a class="text-on-surface-variant hover:text-primary transition-colors" href="./list.html">New Arrivals</a>
+            </nav>
+            <div class="flex items-center gap-6">
+                <div class="hidden lg:flex items-center border-b border-outline-variant py-1">
+                    <span class="material-symbols-outlined text-outline">search</span>
+                    <input class="bg-transparent border-none focus:ring-0 text-caption placeholder:text-outline w-48" placeholder="Search our archives..." type="text" />
+                </div>
+                <button class="material-symbols-outlined text-primary hover:scale-95 transition-transform" data-icon="person" type="button">person</button>
+                <button class="relative text-primary hover:scale-95 transition-transform" data-open-cart type="button">
+                    <span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+                    <span class="absolute -top-2 -right-2 bg-primary text-on-primary text-[10px] min-w-4 h-4 px-1 flex items-center justify-center rounded-full" data-cart-count hidden>0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main id="top">
+        <section class="w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12 md:py-20">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter items-center">
+                <div class="md:col-span-6 order-2 md:order-1">
+                    <span class="font-label-md text-label-md uppercase tracking-[0.2em] text-secondary mb-4 block">Featured Bestseller</span>
+                    <h1 class="font-display-lg text-display-lg text-primary mb-6">The Alchemy of Stillness</h1>
+                    <p class="font-body-lg text-body-lg text-on-surface-variant mb-8 max-w-lg">
+                        An evocative journey into the heart of modern meditation. Explore how silence shapes the creative mind in this award-winning debut.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <a class="bg-primary text-on-primary px-8 py-4 font-label-md text-label-md uppercase tracking-widest hover:bg-on-primary-fixed-variant transition-colors" href="./detail.html?id=alchemy-of-stillness">Purchase Volume</a>
+                        <a class="border border-primary text-primary px-8 py-4 font-label-md text-label-md uppercase tracking-widest hover:bg-primary hover:text-on-primary transition-all" href="./detail.html?id=alchemy-of-stillness">Read Abstract</a>
+                    </div>
+                </div>
+                <div class="md:col-span-6 order-1 md:order-2 flex justify-center">
+                    <div class="relative w-full max-w-[400px] aspect-[3/4] bg-surface-container shadow-xl">
+                        <img alt="The Alchemy of Stillness Book Cover" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGNdxaZ-Vke0nWiFNL0LVtSyOqAxfroAunF8VFOVcpqPm1O0BU2fyEpIRE-jKu674SHDcXL8JgZzQwtQgsfI88DXZs_4-zwNWJAFJfgWEokAdJiuJnVFvSS8iCt13Cz54f1-UwylsOVpCCOnGHLOD0gTBb9Esx2SHM9mlZ1RCXch_UanJhTAdPUm-8mq6V4WqN_yWwVLUnpxNdUI81Uw0sTvmLtB8VnuEmAXjChWCQsZrjkUFVENC95nWCtwkQXVu_igBi4Ul3ViUc" />
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-surface-container-low py-16 md:py-24" id="arrivals">
+            <div class="w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+                <div class="flex justify-between items-end mb-12">
+                    <div>
+                        <h2 class="font-headline-lg text-headline-lg text-primary">New Arrivals</h2>
+                        <div class="h-1 w-12 bg-secondary mt-2"></div>
+                    </div>
+                    <a class="font-label-md text-label-md uppercase tracking-widest text-primary hover:underline decoration-secondary" href="./list.html">View Collection</a>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-gutter" data-home-books></div>
+            </div>
+        </section>
+
+        <section class="py-20 md:py-32 w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop" id="staff-picks">
+            <h2 class="font-headline-lg text-headline-lg text-primary text-center mb-16">Curated Selection: Staff Picks</h2>
+            <div class="grid grid-cols-1 md:grid-cols-12 grid-rows-2 gap-gutter h-auto md:h-[700px]">
+                <div class="md:col-span-7 md:row-span-2 bg-surface-container overflow-hidden relative group">
+                    <img alt="Staff Pick Large" class="w-full h-full object-cover brightness-90 group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCrvlOrfidxdCZOZ3K3LpFplXnK1gZl5Xt4Nbudsrt-t9h38NpU65tsxCPfdfDKFoi37omgS5sAwaynbOSUqlYqIB06wmhcptw_fgDxgVsBhUNXc_KAjwoySHkhc_8W3KsaIIFCbIYq3T5yED06Uupb1o_wGtXptOD8L5mO8BVYlM--aYdNkAIXN5o1SjuvidiZg6oWCRxm5SDxdiP19LUjAhmA9MOR_tKvALJjsp2U_HOdZ9QdcDTGGjCmEAyTAjJBEeIo4JrNU_vQ" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent flex flex-col justify-end p-8 md:p-12">
+                        <span class="text-on-primary font-label-md text-label-md uppercase tracking-widest mb-4">Summer Reading</span>
+                        <h3 class="text-on-primary font-display-lg text-display-lg mb-4">The Art of the Archive</h3>
+                        <p class="text-on-primary/80 font-body-md max-w-md mb-6">A deep dive into the world's most mysterious private libraries and the curators who protect them.</p>
+                        <a class="text-on-primary font-label-md text-label-md uppercase tracking-widest flex items-center gap-2 hover:gap-4 transition-all" href="./detail.html?id=art-of-the-archive">Explore Story <span class="material-symbols-outlined">arrow_forward</span></a>
+                    </div>
+                </div>
+                <div class="md:col-span-5 md:row-span-1 bg-surface-container-high p-8 flex flex-col justify-center border border-surface-variant">
+                    <h3 class="font-headline-md text-headline-md text-primary mb-4">Morning Rituals</h3>
+                    <p class="font-body-md text-on-surface-variant mb-6 italic">"A transformative look at how the first hour of your day determines the rest of your life."</p>
+                    <p class="font-label-md text-label-md text-secondary uppercase tracking-widest">- Julianne Clarke, Lead Curator</p>
+                </div>
+                <div class="md:col-span-5 md:row-span-1 bg-primary text-on-primary p-8 flex flex-col justify-center">
+                    <h3 class="font-headline-md text-headline-md mb-4">Quantum Poetics</h3>
+                    <p class="text-on-primary/80 font-body-md mb-6">Where theoretical physics meets the lyricism of the human heart. A must-read for the inquisitive soul.</p>
+                    <div class="flex items-center gap-4">
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                        <span class="font-label-md text-label-md uppercase tracking-widest">Selected for July</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-surface-container-highest py-20" id="genres">
+            <div class="w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+                <h2 class="font-headline-lg text-headline-lg text-primary mb-12">Browse by Genre</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+                    <a class="relative aspect-video overflow-hidden group cursor-pointer" href="./list.html">
+                        <img alt="Fiction" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBbC7AZyZm7E2_hEYL7bkXKLFjT2GKrT8CklVngk1zStMZ4kVCDzdejlfEc0YrvOuoNq8RnDwwNqRvPHQo7npw2tfqnYAlL_SCRqJ6MhSRF1ddGyelOlpEsRGRVZmtQbZUHUL2dVs7q9zZxbYOdGJZUbQe0RRg80PN8gkEt_ao-OcK-WLamF4PMa68py-Qgz3Vqq3D8VF1RbcxMSlvDCJlP60cR3dn0Cqe8IcOIK28h45PhyFKDbUbLVBOBl2k--Wrtb1HfUigzyHwX" />
+                        <div class="absolute inset-0 bg-primary/20 group-hover:bg-primary/40 transition-colors flex items-center justify-center">
+                            <h3 class="text-on-primary font-display-lg text-headline-lg uppercase tracking-widest">Fiction</h3>
+                        </div>
+                    </a>
+                    <a class="relative aspect-video overflow-hidden group cursor-pointer" href="./list.html">
+                        <img alt="Essays" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhGfpAvjksxUgUxcGg_Xf0RdWDQRWhV_tcgSlKwjOKtTVtBQERgXcB8BoG-0kaP9kfdMAW-qgomKeb1_3teboqOJWjlorbUTAr0Xbf434pmnaslctHFQ9n2S7PyiBE7IiQ_QXvTKnyR859kP_C3QDvwTLykxAx6hsG9vih_p7gEe9v7tYWtHxFYRE5X7l_FBycGkhgIJXuenPBWL--SuymLOSw1zUNF29H8rvffeqX9qO271Ln3qAmJbuF-IXJmO0Jgj4YsBYPr8Y4" />
+                        <div class="absolute inset-0 bg-primary/20 group-hover:bg-primary/40 transition-colors flex items-center justify-center">
+                            <h3 class="text-on-primary font-display-lg text-headline-lg uppercase tracking-widest">Essays</h3>
+                        </div>
+                    </a>
+                    <a class="relative aspect-video overflow-hidden group cursor-pointer" href="./list.html">
+                        <img alt="Rare Editions" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAO9cvct5uVbDth9bOIdnfLwxxvMo8bKxvtdYmxl5TzhVbmThXBAi24WU0bK7ekfn3uxxV3iAcB0Di7qpPipilrpipl3IdC5hfEflJncgK_nUF93DJSsRNuvDRwTEGfgWh_dom55OER_hKUnlNqKg4w87Ktrx6GJvpPYnllz9_FH_dibN_cPwZ7Faqtl-FOfJF8Mg-QbI5uA556x6DRDF2ZU0cvHzjip2aGjSx6Ktylj6xBzHqlmvxdb4iwinEQSAtRS8PkuEQU1U5C" />
+                        <div class="absolute inset-0 bg-primary/20 group-hover:bg-primary/40 transition-colors flex items-center justify-center">
+                            <h3 class="text-on-primary font-display-lg text-headline-lg uppercase tracking-widest">Rare</h3>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 text-center" id="newsletter">
+            <div class="w-full max-w-2xl mx-auto px-margin-mobile">
+                <span class="material-symbols-outlined text-primary text-4xl mb-6">mail_outline</span>
+                <h2 class="font-headline-lg text-headline-lg text-primary mb-4">The Lumina Letter</h2>
+                <p class="font-body-md text-on-surface-variant mb-10">Monthly curations, author interviews, and exclusive access to limited editions delivered to your inbox.</p>
+                <form class="flex flex-col md:flex-row gap-4 newsletter-form">
+                    <input class="flex-grow bg-transparent border-t-0 border-x-0 border-b border-primary focus:ring-0 focus:border-primary px-4 py-3 placeholder:text-outline-variant italic" placeholder="Your email address" type="email" />
+                    <button class="bg-primary text-on-primary px-10 py-3 font-label-md text-label-md uppercase tracking-widest hover:bg-on-primary-fixed-variant transition-colors shrink-0" type="submit">Subscribe</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-surface-container border-t border-surface-variant">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12">
+            <div class="md:col-span-4">
+                <div class="font-display-lg text-headline-md text-primary mb-6">Lumina Books</div>
+                <p class="font-body-md text-body-md text-on-surface-variant max-w-xs mb-8">
+                    Curating the finest literature for the modern intellectual since 2012. Our physical archives are located in London and New York.
+                </p>
+                <div class="flex gap-4">
+                    <a class="material-symbols-outlined text-primary hover:text-secondary transition-colors" href="#" aria-label="Public">public</a>
+                    <a class="material-symbols-outlined text-primary hover:text-secondary transition-colors" href="#" aria-label="Stories">auto_stories</a>
+                    <a class="material-symbols-outlined text-primary hover:text-secondary transition-colors" href="#" aria-label="RSS">rss_feed</a>
+                </div>
+            </div>
+            <div class="md:col-span-2">
+                <h4 class="font-label-md text-label-md uppercase tracking-widest text-primary mb-6">Library</h4>
+                <ul class="space-y-4">
+                    <li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary hover:underline decoration-secondary transition-all" href="#">About Our Library</a></li>
+                    <li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary hover:underline decoration-secondary transition-all" href="./list.html">Staff Picks</a></li>
+                    <li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary hover:underline decoration-secondary transition-all" href="#newsletter">Newsletter Signup</a></li>
+                </ul>
+            </div>
+            <div class="md:col-span-3">
+                <h4 class="font-label-md text-label-md uppercase tracking-widest text-primary mb-6">Services</h4>
+                <ul class="space-y-4">
+                    <li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary hover:underline decoration-secondary transition-all" href="#">Shipping &amp; Returns</a></li>
+                    <li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary hover:underline decoration-secondary transition-all" href="#">Contact Us</a></li>
+                    <li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary hover:underline decoration-secondary transition-all" href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="md:col-span-3">
+                <h4 class="font-label-md text-label-md uppercase tracking-widest text-primary mb-6">Location</h4>
+                <p class="font-body-md text-body-md text-on-surface-variant mb-2">42 Curzon Street</p>
+                <p class="font-body-md text-body-md text-on-surface-variant mb-6">Mayfair, London W1J 7UG</p>
+                <p class="font-body-md text-body-md text-on-surface-variant italic">Open daily 10am - 7pm</p>
+            </div>
+            <div class="md:col-span-12 pt-12 mt-12 border-t border-surface-variant flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="font-body-md text-body-md text-on-surface-variant opacity-75">&copy; 2024 Lumina Books. Curators of the written word.</p>
+                <div class="flex gap-8 text-on-surface-variant opacity-75 text-caption uppercase tracking-tighter">
+                    <span>London</span>
+                    <span>New York</span>
+                    <span>Paris</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="./store.js"></script>
+</body>
+</html>

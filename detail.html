@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fbfaee;
+            color: #1b1c15;
+        }
+    </style>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "background": "#fbfaee",
+                        "primary-container": "#1a237e",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed-variant": "#343d96",
+                        "on-primary-fixed": "#000767",
+                        "on-tertiary-fixed-variant": "#464747",
+                        "on-error-container": "#93000a",
+                        "secondary": "#75584d",
+                        "surface-tint": "#4c56af",
+                        "inverse-primary": "#bdc2ff",
+                        "secondary-container": "#fed7ca",
+                        "error": "#ba1a1a",
+                        "tertiary-container": "#2f3030",
+                        "inverse-surface": "#303129",
+                        "on-primary-container": "#8690ee",
+                        "surface-container-high": "#e9e9dd",
+                        "outline": "#767683",
+                        "on-secondary-fixed-variant": "#5b4137",
+                        "on-surface-variant": "#454652",
+                        "surface-container-lowest": "#ffffff",
+                        "outline-variant": "#c6c5d4",
+                        "primary": "#000666",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed-dim": "#c7c6c6",
+                        "secondary-fixed-dim": "#e4beb2",
+                        "surface-container-low": "#f5f4e8",
+                        "on-background": "#1b1c15",
+                        "primary-fixed-dim": "#bdc2ff",
+                        "on-secondary-fixed": "#2b160f",
+                        "primary-fixed": "#e0e0ff",
+                        "secondary-fixed": "#ffdbce",
+                        "surface": "#fbfaee",
+                        "tertiary": "#1a1b1b",
+                        "on-tertiary-fixed": "#1b1c1c",
+                        "surface-container-highest": "#e4e3d7",
+                        "on-secondary-container": "#795c51",
+                        "inverse-on-surface": "#f2f1e5",
+                        "error-container": "#ffdad6",
+                        "surface-bright": "#fbfaee",
+                        "surface-variant": "#e4e3d7",
+                        "tertiary-fixed": "#e4e2e2",
+                        "on-error": "#ffffff",
+                        "surface-dim": "#dbdbcf",
+                        "on-tertiary-container": "#989797",
+                        "on-surface": "#1b1c15",
+                        "on-secondary": "#ffffff",
+                        "surface-container": "#efeee3"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "unit": "8px",
+                        "margin-desktop": "64px",
+                        "margin-tablet": "32px",
+                        "gutter": "24px",
+                        "container-max": "1280px",
+                        "margin-mobile": "20px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Playfair Display"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Playfair Display"],
+                        "headline-lg-mobile": ["Playfair Display"],
+                        "headline-lg": ["Playfair Display"],
+                        "body-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "caption": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "1.4", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "caption": ["12px", { "lineHeight": "1.4", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-background text-on-surface" data-page="detail">
+    <!-- TopNavBar -->
+    <header class="bg-background border-b border-surface-variant top-0 sticky z-50">
+        <div
+            class="flex justify-between items-center w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop h-20">
+            <a class="font-display-lg text-headline-lg text-primary" href="./index.html">Lumina Books</a>
+            <nav class="hidden md:flex gap-8 items-center">
+                <a class="font-body-md text-label-md uppercase tracking-wider text-primary border-b-2 border-primary pb-1"
+                    href="#">Shop</a>
+                <a class="font-body-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-primary transition-colors"
+                    href="#">Categories</a>
+                <a class="font-body-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-primary transition-colors"
+                    href="#">Bestsellers</a>
+                <a class="font-body-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-primary transition-colors"
+                    href="#">New Arrivals</a>
+            </nav>
+            <div class="flex items-center gap-6">
+                <div class="hidden lg:flex items-center bg-surface-container rounded px-4 py-2">
+                    <span class="material-symbols-outlined text-outline">search</span>
+                    <input class="bg-transparent border-none focus:ring-0 text-label-md ml-2 w-48"
+                        placeholder="Search our collection..." type="text" />
+                </div>
+                <div class="flex gap-4">
+                    <span
+                        class="material-symbols-outlined text-primary cursor-pointer active:scale-95 transition-transform"
+                        data-icon="person">person</span>
+                    <button
+                        class="relative text-primary cursor-pointer active:scale-95 transition-transform"
+                        data-open-cart
+                        type="button">
+                        <span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+                        <span class="absolute -top-2 -right-2 bg-primary text-white text-[10px] min-w-4 h-4 px-1 rounded-full flex items-center justify-center font-bold" data-cart-count>0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12 md:py-20">
+        <!-- Product Hero Section -->
+        <section class="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-gutter mb-20">
+            <!-- Book Cover -->
+            <div class="md:col-span-5 lg:col-span-5">
+                <div
+                    class="aspect-[3/4] bg-surface-container-low border border-outline-variant overflow-hidden shadow-sm">
+                    <img alt="Book Cover" class="w-full h-full object-cover" data-detail-image
+                        data-alt="A premium high-resolution photograph of a minimalist book cover titled 'The Architecture of Silence' set against a soft cream studio background. The lighting is soft and cinematic, casting gentle shadows that emphasize the tactile quality of the paper texture. The color palette is composed of muted ivory and deep navy blues, reflecting a sophisticated editorial aesthetic. The composition is centered and elegant, evoking a sense of calm and intellectual depth."
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1gDSsrJrsL1qhZ1NCRn73gSNTIoDYZIDs1Vh0ttEugo4UScgfH3XSqvY7raIpMi95-hpE9x-rI4M7amoFOgydO7xEoMVD5rDTug-HFGxDQPJ4b2am-lJpTcZLqoieeAOzwCbPvolOBRqBqrn866YF_J1Lp84oNUufvg4O3JthnQu0iOf2lbamu4jYdq2u17Yp-hCzyh-iJ3CXdQPuYPvUmSjxAuhLO9FiAO2sDLpMccadthk3XeXkNrERd1TlCDQQF1wdeHWzJdo0" />
+                </div>
+            </div>
+            <!-- Book Primary Info -->
+            <div class="md:col-span-7 lg:col-span-6 lg:offset-1 flex flex-col justify-center">
+                <nav
+                    class="flex gap-2 text-label-md font-body-md text-on-surface-variant mb-6 uppercase tracking-widest">
+                    <a class="hover:text-primary" href="./list.html">Shop</a>
+                    <span>/</span>
+                    <a class="hover:text-primary" href="./list.html" data-detail-category-link>Contemporary Fiction</a>
+                </nav>
+                <h1 class="font-display-lg text-display-lg text-on-background mb-2" data-detail-title>The Architecture of Silence</h1>
+                <p class="font-headline-md text-headline-md text-secondary mb-8">by <span data-detail-author>Elena Vance</span></p>
+                <div class="flex items-baseline gap-4 mb-10">
+                    <span class="font-display-lg text-headline-lg text-primary" data-detail-price>$32.00</span>
+                    <span class="font-body-md text-label-md text-outline line-through" data-detail-compare>$45.00</span>
+                </div>
+                <div class="space-y-6 mb-10">
+                    <p class="font-body-lg text-body-lg text-on-surface leading-relaxed" data-detail-description>
+                        A hauntingly beautiful exploration of the spaces we inhabit and the secrets they hold. Elena
+                        Vance's masterpiece invites readers into a world where every hallway whispers a different story
+                        and silence is the loudest inhabitant.
+                    </p>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <button
+                        class="flex-1 bg-primary text-on-primary font-body-md text-label-md uppercase tracking-widest py-5 px-8 hover:bg-on-primary-fixed transition-colors"
+                        data-add-to-cart
+                        type="button">
+                        Add to Cart
+                    </button>
+                    <button
+                        class="flex-1 border border-primary text-primary font-body-md text-label-md uppercase tracking-widest py-5 px-8 hover:bg-surface-container transition-colors">
+                        Add to Wishlist
+                    </button>
+                </div>
+                <div class="mt-8 pt-8 border-t border-outline-variant grid grid-cols-2 gap-4">
+                    <div>
+                        <p class="text-label-md font-body-md text-outline uppercase tracking-tighter mb-1">Shipping</p>
+                        <p class="text-body-md font-body-md">Free worldwide delivery</p>
+                    </div>
+                    <div>
+                        <p class="text-label-md font-body-md text-outline uppercase tracking-tighter mb-1">Returns</p>
+                        <p class="text-body-md font-body-md">30-day elegant returns</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Product Details Bento Grid -->
+        <section class="grid grid-cols-1 md:grid-cols-12 gap-gutter mb-20">
+            <!-- Detailed Summary -->
+            <div class="md:col-span-8 bg-surface-container-low p-10 border border-outline-variant">
+                <h2 class="font-headline-lg text-headline-lg mb-6">Editorial Summary</h2>
+                <div class="space-y-4 font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                    <p>In "The Architecture of Silence," award-winning author Elena Vance presents a narrative that is
+                        both expansive and intimately claustrophobic. The story follows Julian Thorne, a reclusive
+                        architect tasked with renovating a crumbling estate on the coast of Maine. As Julian peels back
+                        the layers of dust and decayed timber, he discovers architectural plans that defy physical
+                        logic—rooms that shouldn't exist and shadows that move independently of the light.</p>
+                    <p>Vance’s prose is surgical in its precision, carving out a space between Gothic horror and modern
+                        philosophical inquiry. This is not merely a ghost story; it is a profound meditation on the
+                        structures we build to house our grief and the inevitable collapse of our most private
+                        foundations.</p>
+                </div>
+            </div>
+            <!-- Specifications -->
+            <div class="md:col-span-4 bg-primary text-on-primary p-10 flex flex-col justify-between">
+                <div>
+                    <h2 class="font-headline-md text-headline-md mb-8 border-b border-on-primary-container pb-4">
+                        Specifications</h2>
+                    <ul class="space-y-6">
+                        <li class="flex justify-between border-b border-on-primary-container/30 pb-2">
+                            <span class="text-label-md uppercase opacity-70">ISBN</span>
+                            <span class="text-body-md font-medium" data-detail-isbn>978-3-16-148410-0</span>
+                        </li>
+                        <li class="flex justify-between border-b border-on-primary-container/30 pb-2">
+                            <span class="text-label-md uppercase opacity-70">Format</span>
+                            <span class="text-body-md font-medium" data-detail-format>Hardcover</span>
+                        </li>
+                        <li class="flex justify-between border-b border-on-primary-container/30 pb-2">
+                            <span class="text-label-md uppercase opacity-70">Pages</span>
+                            <span class="text-body-md font-medium" data-detail-pages>412 Pages</span>
+                        </li>
+                        <li class="flex justify-between border-b border-on-primary-container/30 pb-2">
+                            <span class="text-label-md uppercase opacity-70">Publisher</span>
+                            <span class="text-body-md font-medium" data-detail-publisher>Lumina Press</span>
+                        </li>
+                        <li class="flex justify-between border-b border-on-primary-container/30 pb-2">
+                            <span class="text-label-md uppercase opacity-70">Language</span>
+                            <span class="text-body-md font-medium" data-detail-language>English</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="mt-12 flex items-center gap-4">
+                    <span class="material-symbols-outlined text-4xl" data-icon="book_5">book_5</span>
+                    <p class="text-caption leading-tight opacity-80">This edition features a bespoke linen cover and
+                        silver-foil stamping.</p>
+                </div>
+            </div>
+        </section>
+        <!-- Reader Reviews -->
+        <section class="mb-20">
+            <div class="flex items-baseline justify-between mb-10">
+                <h2 class="font-display-lg text-headline-lg">Reader Reviews</h2>
+                <button class="text-primary font-body-md text-label-md uppercase underline tracking-wider">Write a
+                    Review</button>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+                <!-- Review 1 -->
+                <div class="border border-outline-variant p-8 bg-surface-container-lowest">
+                    <div class="flex text-secondary mb-4">
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                    </div>
+                    <p class="font-headline-md text-body-lg mb-4 italic">"An atmospheric triumph that stayed with me for
+                        weeks."</p>
+                    <p class="font-body-md text-body-md text-on-surface-variant mb-6 leading-relaxed">
+                        The way Vance describes light and shadow is unlike anything I've read. The book feels heavy with
+                        meaning.
+                    </p>
+                    <div class="flex items-center gap-3">
+                        <div
+                            class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container font-bold">
+                            M</div>
+                        <div>
+                            <p class="text-label-md font-bold">Marcus Thorne</p>
+                            <p class="text-caption text-outline">Verified Collector</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Review 2 -->
+                <div class="border border-outline-variant p-8 bg-surface-container-lowest">
+                    <div class="flex text-secondary mb-4">
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">star</span>
+                    </div>
+                    <p class="font-headline-md text-body-lg mb-4 italic">"A slow burn that ignites in the final act."
+                    </p>
+                    <p class="font-body-md text-body-md text-on-surface-variant mb-6 leading-relaxed">
+                        It takes its time building the world, but the payoff is absolutely worth the patience required.
+                    </p>
+                    <div class="flex items-center gap-3">
+                        <div
+                            class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-primary font-bold">
+                            S</div>
+                        <div>
+                            <p class="text-label-md font-bold">Sarah Jenkins</p>
+                            <p class="text-caption text-outline">Lumina Member</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Review 3 -->
+                <div class="border border-outline-variant p-8 bg-surface-container-lowest">
+                    <div class="flex text-secondary mb-4">
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                    </div>
+                    <p class="font-headline-md text-body-lg mb-4 italic">"Pure literary mastery."</p>
+                    <p class="font-body-md text-body-md text-on-surface-variant mb-6 leading-relaxed">
+                        This is why we still buy physical books. The prose is as beautiful as the Lumina edition itself.
+                    </p>
+                    <div class="flex items-center gap-3">
+                        <div
+                            class="w-10 h-10 rounded-full bg-tertiary-fixed flex items-center justify-center text-on-tertiary-fixed font-bold">
+                            L</div>
+                        <div>
+                            <p class="text-label-md font-bold">Leo Castelli</p>
+                            <p class="text-caption text-outline">Verified Collector</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Similar Recommendations -->
+        <section>
+            <div class="flex items-center justify-between mb-10">
+                <h2 class="font-display-lg text-headline-lg">Further Reading</h2>
+                <div class="flex gap-2">
+                    <button
+                        class="w-10 h-10 border border-outline-variant flex items-center justify-center hover:bg-surface-container transition-colors">
+                        <span class="material-symbols-outlined">chevron_left</span>
+                    </button>
+                    <button
+                        class="w-10 h-10 border border-outline-variant flex items-center justify-center hover:bg-surface-container transition-colors">
+                        <span class="material-symbols-outlined">chevron_right</span>
+                    </button>
+                </div>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-gutter" data-related-products>
+                <!-- Book Card 1 -->
+                <div class="group cursor-pointer">
+                    <div
+                        class="aspect-[3/4] bg-surface-container border border-outline-variant overflow-hidden mb-4 group-hover:shadow-lg transition-shadow duration-300">
+                        <img alt="Book Cover"
+                            class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                            data-alt="A detailed photograph of a classic leather-bound book titled 'The Echo Chamber' on a rustic oak table. The lighting is warm and amber, suggesting a late afternoon in a traditional library. The atmosphere is cozy and scholarly, with the book's gold-leafed spine catching the light. The overall aesthetic is rich and timeless, focusing on the craftsmanship of the physical volume."
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBr-8lEbSrBaZ4lO_0RcYoq_JjjaxYTJ-GZm2mq0f1gAWPNBOIa2DghDbku9mD80NHYbIVJKAFGGQvOiwbCrRsNzEU1ao6k9KTTbvoOfHdjkYhpyS9Y0dAmmn6ZqHVwcWE3Q2tqTWE6ygW_ITjx0SNi1SvnFWx71eRXQ61Kf1ZPHFkML0AwIzeilJECp5dvp29Z5mKVKMeQzWBIFjdrIXjYpZCa2617gOiYX9X__UPoNMvh68-RqKISVD02DQ7r1dC6lYFe6gpwowMl" />
+                    </div>
+                    <h3 class="font-headline-md text-body-lg mb-1 group-hover:text-primary transition-colors">The Echo
+                        Chamber</h3>
+                    <p class="font-body-md text-label-md text-on-surface-variant uppercase tracking-wider mb-2">Julian
+                        Voss</p>
+                    <p class="font-body-md text-label-md text-primary">$28.00</p>
+                </div>
+                <!-- Book Card 2 -->
+                <div class="group cursor-pointer">
+                    <div
+                        class="aspect-[3/4] bg-surface-container border border-outline-variant overflow-hidden mb-4 group-hover:shadow-lg transition-shadow duration-300">
+                        <img alt="Book Cover"
+                            class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                            data-alt="An artistic high-angle shot of an open book titled 'Paper Geographies' showcasing intricate map-like diagrams on its pages. The background is a crisp white linen surface, creating a clean and modern editorial feel. The color palette is restricted to teal and sepia tones, evoking a sense of exploration and intellectual curiosity. The lighting is bright and even, highlighting the fine print and paper grain."
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBU7gvNMlJF0gLYsY8did1ruz6-q7vtqx6kr9_VoFauU0iuBs-PAng2NyxsKoSMistjBKEX80sYXhye7veY8yEpeeggYbY3oQgc5FySv9Hl-RUqjShowRZ8OcriLghuOZYkPX95Ccqz348Ukceju0PVmKYGWEN6v1EiV-HZ3wr1IPshWLCm28kxpj7-jTOntZoQtBOwdaGoid42vmRU4jXaPcpC-EWoDi7BsukPMjs2KlqeZcN7bgAlX6kjvgy2zKYuui697cejHvDQ" />
+                    </div>
+                    <h3 class="font-headline-md text-body-lg mb-1 group-hover:text-primary transition-colors">Paper
+                        Geographies</h3>
+                    <p class="font-body-md text-label-md text-on-surface-variant uppercase tracking-wider mb-2">Clara
+                        Mond</p>
+                    <p class="font-body-md text-label-md text-primary">$35.00</p>
+                </div>
+                <!-- Book Card 3 -->
+                <div class="group cursor-pointer">
+                    <div
+                        class="aspect-[3/4] bg-surface-container border border-outline-variant overflow-hidden mb-4 group-hover:shadow-lg transition-shadow duration-300">
+                        <img alt="Book Cover"
+                            class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                            data-alt="A professional product shot of a cloth-bound book titled 'Shadow Casts' standing upright in a dark, moody environment. Dramatic side-lighting creates high contrast, casting long, artistic shadows across a textured stone surface. The color scheme is deep charcoal and forest green, conveying a sense of mystery and modern drama. The image quality is sharp, emphasizing the textile quality of the book's binding."
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7WwBgPhZoMPzLGT7H_lcqh-5uDo3T42ulH5g8ATzYKT-cHjbjY9ulTdxQekog6mhL4NiyqlU0U4f_mewuKe9R7QfdRlcX3s2F9ZaS9WoHlmvgSKRdVb8slKVBwmQTOTbNe1Z7r36wQ16plv_t1cqNOhkVU57E9qm4NIK34qqFv-3xxoomHR1D5KKZ7VyYB5eaTEKOwhJJ7jOP7LFbLS0RUGBJq45wSk1MzdzmLrYmlSqjF2KkKHad3I5pVbwhpmr4B5I4bpiS_-LJ" />
+                    </div>
+                    <h3 class="font-headline-md text-body-lg mb-1 group-hover:text-primary transition-colors">Shadow
+                        Casts</h3>
+                    <p class="font-body-md text-label-md text-on-surface-variant uppercase tracking-wider mb-2">Thomas
+                        K. Reed</p>
+                    <p class="font-body-md text-label-md text-primary">$30.00</p>
+                </div>
+                <!-- Book Card 4 -->
+                <div class="group cursor-pointer">
+                    <div
+                        class="aspect-[3/4] bg-surface-container border border-outline-variant overflow-hidden mb-4 group-hover:shadow-lg transition-shadow duration-300">
+                        <img alt="Book Cover"
+                            class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                            data-alt="A minimalist overhead view of a modern book titled 'The White Margin' lying on a sleek marble tabletop. The composition is clean and symmetrical, with the book's stark white cover contrasted by a single dark leaf placed beside it. The lighting is natural and diffuse, reflecting a bright morning in a contemporary workspace. The aesthetic is extremely minimal, focusing on purity of form and luxury textures."
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAW6ru8y6BdXzQ1gchcuhOlVX0nxWZdZUCCLqA4nXTJ33i5O27bCNEV-ekNAOKX5PebDpQYz-0dVpw9nVcXHTiWnIZAkvy_klb7HsWayxOG4OdZKwlVXslvsxmPkhnC1zni3JQXikBp21STq5XTJd_QpdnDR8JbXYQ8KxErlwRLiQcTBCf5KePrNQjsE7yOrfYe21bTNGuzIeHoIRJ0eeUbHP_hD4UPvqVv6WxalbLZKUF6jHyeCoPnkxL2KScRVixL4ioYvEJh2uD8" />
+                    </div>
+                    <h3 class="font-headline-md text-body-lg mb-1 group-hover:text-primary transition-colors">The White
+                        Margin</h3>
+                    <p class="font-body-md text-label-md text-on-surface-variant uppercase tracking-wider mb-2">Aria S.
+                        Lee</p>
+                    <p class="font-body-md text-label-md text-primary">$42.00</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- Footer -->
+    <footer class="bg-surface-container border-t border-surface-variant">
+        <div
+            class="grid grid-cols-1 md:grid-cols-12 gap-gutter w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-20">
+            <div class="md:col-span-4">
+                <div class="font-display-lg text-headline-md text-primary mb-6">Lumina Books</div>
+                <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed max-w-xs">
+                    Curators of the written word, dedicated to the preservation of physical literature in a digital age.
+                </p>
+            </div>
+            <div class="md:col-span-2">
+                <h4 class="font-body-md text-label-md uppercase tracking-widest text-primary mb-6">Explore</h4>
+                <ul class="space-y-4">
+                    <li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-all"
+                            href="#">About Our Library</a></li>
+                    <li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-all"
+                            href="#">New Arrivals</a></li>
+                    <li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-all"
+                            href="#">Bestsellers</a></li>
+                    <li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-all"
+                            href="#">Bespoke Editions</a></li>
+                </ul>
+            </div>
+            <div class="md:col-span-2">
+                <h4 class="font-body-md text-label-md uppercase tracking-widest text-primary mb-6">Client Care</h4>
+                <ul class="space-y-4">
+                    <li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-all"
+                            href="#">Shipping &amp; Returns</a></li>
+                    <li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-all"
+                            href="#">Privacy Policy</a></li>
+                    <li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-all"
+                            href="#">Contact Us</a></li>
+                    <li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-all"
+                            href="#">Newsletter Signup</a></li>
+                </ul>
+            </div>
+            <div class="md:col-span-4">
+                <h4 class="font-body-md text-label-md uppercase tracking-widest text-primary mb-6">The Newsletter</h4>
+                <p class="font-body-md text-caption text-on-surface-variant mb-6">Join our circle for exclusive access
+                    to rare finds and new releases.</p>
+                <div class="flex border-b border-primary pb-2">
+                    <input
+                        class="bg-transparent border-none focus:ring-0 text-body-md w-full placeholder:text-outline/50"
+                        placeholder="Email Address" type="email" />
+                    <button
+                        class="text-primary font-bold uppercase tracking-widest text-label-md ml-4 hover:opacity-70">Join</button>
+                </div>
+            </div>
+        </div>
+        <div
+            class="w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-8 border-t border-surface-variant/30 text-center md:text-left">
+            <p class="font-body-md text-caption text-outline">© 2024 Lumina Books. Curators of the written word.</p>
+        </div>
+    </footer>
+    <script src="./store.js"></script>
+</body>
+
+</html>
